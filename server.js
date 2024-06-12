@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 // Definir la ruta raíz
-app.get('/', (req, res) => {
-    res.send('Hello World! Webhook Server is Running');
+app.get('/test', (req, res) => {
+    res.send('Hello World! Webhook Server is Running...');
 });
 
 // Ruta para el webhook
