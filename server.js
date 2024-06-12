@@ -1,18 +1,23 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
-app.post('/treble-webhook', (req, res) => {
-  // Procesa la petición desde Treble
-  const data = req.body;
-  console.log(data);
+// Middleware
+app.use(bodyParser.json());
 
-  // Envía una respuesta a Treble
-  res.json({
-    status: 'success',
-    message: 'Petición recibida correctamente'
-  });
+// Definir la ruta raíz
+app.get('/', (req, res) => {
+    res.send('Hello World! Webhook Server is Running');
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Servidor escuchando en el puerto 3000');
+// Ruta para el webhook
+app.post('/webhook', (req, res) => {
+    console.log('Webhook received:', req.body);
+    res.status(200).send('Webhook received');
+});
+
+// Configurar el puerto
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
