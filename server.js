@@ -62,7 +62,21 @@ app.post('/treble-webhook', (req, res) => {
   axios.post(apiUrl, apiData, {headers})
     .then(response => {
       console.log('Response Axios data:', response.data);
-
+         // Envía una respuesta a Treble
+      res.json({
+        status: 'success',
+        message: 'Petición recibida correctamente y POST request realizada',
+        user_session_keys: [
+          {
+            key: 'tipo_plan',
+            value: 'pospago'
+          },
+          {
+            key: 'valor',
+            value: '$39.990'
+          }
+        ]
+      });
     })
     .catch(error => {
       console.error('Error making POST request:', error);
