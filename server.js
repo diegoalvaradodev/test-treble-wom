@@ -35,13 +35,20 @@ app.post('/treble-webhook', (req, res) => {
       },
       {
         key: "valor",
-        value: "$39.990"
+        value: "$69.690"
       }
     ]
   };
 
+
+// Headers de autenticación
+  const headers = {
+    'Authorization': 'ak_Y66T0p94jjd790p4I1TKY9IdszOKr_X8Kw', // Reemplaza YOUR_ACCESS_TOKEN con tu token de autenticación real
+    'Content-Type': 'application/json'
+  };
+    
   // Realizar la petición a la API de Treble
-  axios.post(apiUrl, apiData)
+  axios.post(apiUrl, apiData, { headers })
     .then(response => {
       console.log('Response data:', response.data);
 
@@ -56,7 +63,7 @@ app.post('/treble-webhook', (req, res) => {
           },
           {
             key: 'valor',
-            value: '$39.990'
+            value: '$59.990'
           }
         ]
       });
