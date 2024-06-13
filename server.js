@@ -79,7 +79,7 @@ app.post('/treble-webhook', (req, res) => {
         ]
       });
     });
-    console.log('Final respuesta json:', res.json);
+    console.log('Final respuesta json:'+ res.json);
     .catch(error => {
       console.error('Error making POST request:', error);
 
