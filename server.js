@@ -26,6 +26,7 @@ app.post('/treble-webhook', (req, res) => {
   const sessionId = data.session_id; // Obtener el ID de la sesión
   const apiUrl = `https://main.treble.ai/session/${sessionId}/update`; // Construir la URL de la API
   // Preparar los datos de la petición
+ console.log("El API a ejecutar es: "+apiUrl);
   const apiData = {
     user_session_keys: [
       {
