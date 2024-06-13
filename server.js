@@ -28,7 +28,7 @@ app.post('/treble-webhook', (req, res) => {
     message: 'Petición recibida correctamente',
     user_session_keys: [
     {
-      key: 'plan',
+      key: 'tipo_plan',
       value: 'pospago'
     },
     {
