@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const request = require('request'); 
+const axios = require('axios');
 
 // Middleware
 app.use(bodyParser.json());
@@ -17,68 +17,59 @@ app.post('/webhook', (req, res) => {
     res.status(200).send('Webhook received');
 });
 
-//Ruta para el webhook de treble
+// Ruta para el webhook de Treble
 app.post('/treble-webhook', (req, res) => {
   // Procesa la petición desde Treble
   const data = req.body;
   console.log(data);
-
-  // Llamar a la API de Treble
-const sessionId = data.session_id; // Obtener el ID de la sesión
-const apiUrl = https://main.treble.ai/session/${sessionId}/update`; // Construir la URL de la API
-
-// Preparar los datos de la petición
-const apiData = { 
-  "user_session_keys": [
-    {
-      "key": "plan",
-      "value": "pospago"
-    },
-    {
-      "key": "valor",
-      "value": "$39.990"
-    }
-  ]
-};
-
-// Opciones de la petición
-const options = {
-  method: 'POST', // Método HTTP (POST en este caso)
-  url: apiUrl,
-  headers: {
-    'Content-Type': 'application/json' // Tipo de contenido
-  },
-  body: JSON.stringify(apiData) // Cuerpo de la petición
-};
-
-// Realizar la petición a la API de Treble
-request(options, (error, apiResponse) => {
-  if (error) {
-    console.error('Error al llamar a la API de Treble:', error);
-    // Manejar el error de forma adecuada (por ejemplo, registrarlo en un log)
-  } else {
-    console.log('Respuesta de la API de Treble:', apiResponse.body);
-    // Procesar la respuesta de la API de Treble (opcional)
-  }
-});
-
-    
-    
-  // Envía una respuesta a Treble
-  res.json({
-    status: 'success',
-    message: 'Petición recibida correctamente',
+  
+  const sessionId = data.session_id; // Obtener el ID de la sesión
+  const apiUrl = `https://main.treble.ai/session/${sessionId}/update`; // Construir la URL de la API
+  // Preparar los datos de la petición
+  const apiData = {
     user_session_keys: [
-    {
-      key: 'tipo_plan',
-      value: 'pospago'
-    },
-    {
-      key: 'valor',
-      value: '$39.990'
-    }
-  ]
-  });
+      {
+        key: "plan",
+        value: "pospago"
+      },
+      {
+        key: "valor",
+        value: "$39.990"
+      }
+    ]
+  };
+
+  // Realizar la petición a la API de Treble
+  axios.post(apiUrl, apiData)
+    .then(response => {
+      console.log('Response data:', response.data);
+
+      // Envía una respuesta a Treble
+      res.json({
+        status: 'success',
+        message: 'Petición recibida correctamente y POST request realizada',
+        user_session_keys: [
+          {
+            key: 'tipo_plan',
+            value: 'pospago'
+          },
+          {
+            key: 'valor',
+            value: '$39.990'
+          }
+        ]
+      });
+    })
+    .catch(error => {
+      console.error('Error making POST request:', error);
+
+      // Envía una respuesta a Treble con el error
+      res.status(500).json({
+        status: 'error',
+        message: 'Error processing webhook',
+        error: error.message
+      });
+    });
 });
 
 // Configurar el puerto
