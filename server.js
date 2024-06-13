@@ -25,7 +25,17 @@ app.post('/treble-webhook', (req, res) => {
   // Envía una respuesta a Treble
   res.json({
     status: 'success',
-    message: 'Petición recibida correctamente'
+    message: 'Petición recibida correctamente',
+    user_session_keys: [
+    {
+      key: 'plan',
+      value: 'pospago'
+    },
+    {
+      key: 'valor',
+      value: '$39.990'
+    }
+  ]
   });
 });
 
