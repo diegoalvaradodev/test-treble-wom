@@ -59,7 +59,7 @@ app.post('/treble-webhook', (req, res) => {
   console.log('Headers de la petición:', headers);
 
   // Realizar la petición a la API de Treble
-  axios.post(apiUrl, apiData, { headers })
+  axios.post(apiUrl, apiData, {headers})
     .then(response => {
       console.log('Response Axios data:', response.data);
 
@@ -79,7 +79,7 @@ app.post('/treble-webhook', (req, res) => {
         ]
       });
     });
-    console.log('Final respuesta json:'+ res.json);
+    console.log('Final respuesta json');
     .catch(error => {
       console.error('Error making POST request:', error);
 
