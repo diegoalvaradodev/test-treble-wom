@@ -38,7 +38,7 @@ app.post('/treble-webhook', (req, res) => {
   const apiData = {
     user_session_keys: [
       {
-        key: "plan",
+        key: "tipo_plan",
         value: "pospago"
       },
       {
