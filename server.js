@@ -75,7 +75,7 @@ app.post('/webhook', (req, res) => {
 
 // Ruta para el webhook de Treble
 app.post('/treble-webhook', (req, res) => {
-    const sessionId = req.body.sessionId; // Asegúrate de que sessionId esté definido correctamente
+    const sessionId = res.session_id; // Asegúrate de que sessionId esté definido correctamente
     const apiUrl = `https://main.treble.ai/session/${sessionId}/update`; // Construir la URL de la API
   
     // Preparar los datos de la petición
@@ -94,7 +94,7 @@ app.post('/treble-webhook', (req, res) => {
 
     // Headers de autenticación
     const headers = {
-        'Authorization': 'Bearer ak_Y66T0p94jjd790p4I1TKY9IdszOKr_X8Kw', // Reemplaza YOUR_ACCESS_TOKEN con tu token de autenticación real
+        'Authorization': 'ak_Y66T0p94jjd790p4I1TKY9IdszOKr_X8Kw', // Reemplaza YOUR_ACCESS_TOKEN con tu token de autenticación real
         'Content-Type': 'application/json'
     };
 
@@ -105,7 +105,7 @@ app.post('/treble-webhook', (req, res) => {
     // Agregar tiempo de espera de 3 segundos
     setTimeout(() => {
         // Realizar la petición a la API de Treble
-        axios.post(apiUrl, apiData, { headers })
+        axios.post(apiUrl, apiData, {headers})
             .then(response => {
                 console.log('Response Treble data:', response.data);
                 console.log('Response Treble status:', response.status);
