@@ -74,7 +74,7 @@ app.post('/webhook', (req, res) => {
 
 
 // Ruta para el webhook de Treble
-app.post('/webhook', (req, res) => {
+app.post('/treble-webhook', (req, res) => {
     const sessionId = req.body.sessionId; // Asegúrate de que sessionId esté definido correctamente
     const apiUrl = `https://main.treble.ai/session/${sessionId}/update`; // Construir la URL de la API
   
