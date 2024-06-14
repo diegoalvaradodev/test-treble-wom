@@ -41,7 +41,8 @@ app.post('/webhook', (req, res) => {
   // Realizar la petición a la API de Treble
   axios.post(apiUrl, apiData, {headers})
     .then(response => {
-      console.log('Response Axios data:', response.data);
+      console.log('Response Treble data:', response.data);
+        console.log('Response Treble status:', response.status);
          // Envía una respuesta a Treble
       res.json({
         status: 'success',
