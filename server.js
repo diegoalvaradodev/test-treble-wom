@@ -78,7 +78,21 @@ app.post('/treble-webhook', (req, res) => {
   // Procesa la petición desde Treble
   const data = req.body;
   console.log('Datos recibidos del webhook:', data);
-
+// Envía una respuesta a Treble
+        res.json({
+          status: 'success',
+          message: 'Petición recibida correctamente y POST request realizada',
+          user_session_keys: [
+            {
+              key: 'tipo_plan',
+              value: 'pospago'
+            },
+            {
+              key: 'valor',
+              value: '$39.990'
+            }
+          ]
+        });
   const sessionId = data.session_id; // Obtener el ID de la sesión
   if (!sessionId) {
     console.error('session_id no encontrado en la petición');
@@ -121,21 +135,7 @@ app.post('/treble-webhook', (req, res) => {
       .then(response => {
         console.log('Response Treble data:', response.data);
           console.log('Response Treble status:', response.status);
-        // Envía una respuesta a Treble
-        res.json({
-          status: 'success',
-          message: 'Petición recibida correctamente y POST request realizada',
-          user_session_keys: [
-            {
-              key: 'tipo_plan',
-              value: 'pospago'
-            },
-            {
-              key: 'valor',
-              value: '$39.990'
-            }
-          ]
-        });
+        
       })
       .catch(error => {
         console.error('Error making POST request:', error);
