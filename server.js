@@ -113,9 +113,9 @@ app.post('/treble-webhook', (req, res) => {
   console.log('Datos de la petición:', apiData);
   console.log('Headers de la petición:', headers);
 
-  // Agregar tiempo de espera de 3 segundos
+  // Agregar tiempo de espera de 7 segundos
   setTimeout(() => {
-      console.log("Espera 3 sg...");
+      console.log("Espera 7 sg...");
     // Realizar la petición a la API de Treble
     axios.post(apiUrl, apiData, {headers})
       .then(response => {
@@ -147,7 +147,7 @@ app.post('/treble-webhook', (req, res) => {
           error: error.message
         });
       });
-  }, 3000); // 3000 milisegundos = 3 segundos
+  }, 7000); // 7000 milisegundos = 3 segundos
 });
 
 // Configurar el puerto
