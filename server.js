@@ -15,6 +15,18 @@ app.listen(PORT, () => {
 // Definir la ruta raíz
 app.get('/test', (req, res) => {
     res.send('Webhook Server is Running...');
+    const data = req.body;
+    console.log('Datos recibidos del webhook:', data);
+});
+
+// Definir la ruta raíz
+app.post('/treble-webhook-dos', (req, res) => {
+     res.json({
+        status: 'success',
+        message: 'Petición recibida correctamente y POST request realizada'
+    });
+    const data = req.body;
+    console.log('Datos recibidos del webhook dos:', data);
 });
 
 
