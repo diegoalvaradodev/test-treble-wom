@@ -101,12 +101,10 @@ app.post('/treble-webhook', (req, res) => {
 // Realizar la petición a la API de Treble para actualizar chat
     axios.post(apiUrl, apiData, {headers})
       .then(response => {
-        console.log('Response Treble data:', response.data);
+        console.log('Response Treble:', response);
+          console.log('Response Treble data:', response.data);
         console.log('Response Treble status:', response.status);
-          response.json({
-            status: 'success',
-            message: 'Peticion de actualizacion de chat exitosa'
-        });
+          
     })
     .catch(error => {
         console.error('Error making POST request:', error);
