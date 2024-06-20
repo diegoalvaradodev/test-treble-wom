@@ -58,6 +58,10 @@ app.post('/treble-webhook', (req, res) => {
       {
         key: "valor",
         value: "$29.990"
+      },
+      {
+        key: "tipo_solicitud",
+        value: "portabilidad"
       }
     ]
   };
