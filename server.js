@@ -21,9 +21,21 @@ app.get('/test', (req, res) => {
 
 // Definir la ruta raíz
 app.post('/treble-webhook-dos', (req, res) => {
-     res.json({
+    const data = req.body;
+    console.log('Datos recibidos del webhook dos:', data); 
+    res.json({
         status: 'success',
-        message: 'Petición recibida correctamente y POST request realizada'
+        message: 'Petición recibida correctamente y POST request realizada',
+         user_session_keys: [
+            {
+              key: 'tipo_plan',
+              value: 'pospago'
+            },
+            {
+              key: 'valor',
+              value: '$49.990'
+            }
+          ]
     });
     const data = req.body;
     console.log('Datos recibidos del webhook dos:', data);
