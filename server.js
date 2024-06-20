@@ -103,7 +103,8 @@ app.post('/treble-webhook', (req, res) => {
       .then(response => {
         console.log('Response Treble data:', response.data);
         console.log('Response Treble status:', response.status);
-        res.json({
+        server.send({message: 'Peticion de actualizacion exitosa'});
+          response.json({
             status: 'success',
             message: 'Peticion de actualizacion de chat exitosa'
         });
