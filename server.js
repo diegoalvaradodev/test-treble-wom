@@ -37,8 +37,6 @@ app.post('/treble-webhook-dos', (req, res) => {
             }
           ]
     });
-    const data = req.body;
-    console.log('Datos recibidos del webhook dos:', data);
 });
 
 
