@@ -28,12 +28,8 @@ app.post('/treble-webhook-dos', (req, res) => {
         message: 'Petición recibida correctamente y POST request realizada',
          user_session_keys: [
             {
-              key: 'tipo_plan',
-              value: 'pospago'
-            },
-            {
-              key: 'valor',
-              value: '$49.990'
+              key: 'estado_portabilidad',
+              value: 'exitosa'
             }
           ]
     });
@@ -49,17 +45,7 @@ app.post('/treble-webhook', (req, res) => {
   // Envía una respuesta a Treble
   res.json({
         status: 'success',
-        message: 'Petición recibida correctamente y POST request realizada',
-        user_session_keys: [
-            {
-              key: 'tipo_plan',
-              value: 'pospago'
-            },
-            {
-              key: 'valor',
-              value: '$39.990'
-            }
-          ]
+        message: 'Petición recibida correctamente y POST request realizada'
     });
     
   const sessionId = data.session_id; // Obtener el ID de la sesión
@@ -75,14 +61,6 @@ app.post('/treble-webhook', (req, res) => {
   // Preparar los datos de la petición
   const apiData = {
     user_session_keys: [
-      {
-        key: "tipo_plan",
-        value: "pospago"
-      },
-      {
-        key: "valor",
-        value: "$29.990"
-      },
       {
         key: "tipo_solicitud",
         value: "portabilidad"
