@@ -24,13 +24,13 @@ app.post('/send-nip', (req, res) => {
     const data = req.body;
     console.log('Datos recibidos del webhook nip:', data); 
     
-    const number = data.cellphone;
+    let number = data.cellphone;
     number += "57" + number;
 
     console.log('Number: ',number);
 
-    const operator = data.actual_response; 
-    const operatorCode = operator.charAt(0);
+    let operator = data.actual_response; 
+    let operatorCode = operator.charAt(0);
 
     console.log('Operator: ', operator);
     console.log('operatorCode: ',operatorCode);
@@ -51,8 +51,8 @@ app.post('/send-nip', (req, res) => {
     // }
     //;
     
-    //console.log('Iniciando peticion NIP a Treble:', apiUrl);
-    //console.log('Datos de la petición NIP:', apiData);
+    //onsole.log('Iniciando peticion NIP a Treble:', apiUrl);
+    //onsole.log('Datos de la petición NIP:', apiData);
     
     //Realizar la petición a la API de Treble para actualizar chat
     // axios.post(apiUrl, apiData)
