@@ -25,7 +25,7 @@ app.post('/send-nip', (req, res) => {
     console.log('Datos recibidos del webhook nip:', data); 
     
     let number = data.cellphone;
-    number += "57" + number;
+    number = "57" + number;
 
     console.log('Number: ',number);
 
