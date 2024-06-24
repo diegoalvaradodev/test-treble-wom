@@ -24,7 +24,18 @@ app.post('/send-nip', (req, res) => {
     const data = req.body;
     console.log('Datos recibidos del webhook nip:', data); 
     
-    
+    const number = data.cellphone;
+    number += "57" + number;
+
+    console.log('Number: ',number);
+
+    const operator = data.actual_response; 
+    const operatorCode = operator.charAt(0);
+
+    console.log('Operator: ', operator);
+    console.log('operatorCode: ',operatorCode);
+
+
     //const apiUrl = `https://whatsappportabilidad.middlewom.co:443/requestnipcode/api/v1/requestnipcode/?user_key=588ff92551a096734491602cdda23a10`; // Construir la URL de la API
       // Preparar los datos de la petición
     //  const apiData = {    
@@ -40,8 +51,8 @@ app.post('/send-nip', (req, res) => {
     // }
     //;
     
-    //onsole.log('Iniciando peticion NIP a Treble:', apiUrl);
-    //onsole.log('Datos de la petición NIP:', apiData);
+    //console.log('Iniciando peticion NIP a Treble:', apiUrl);
+    //console.log('Datos de la petición NIP:', apiData);
     
     //Realizar la petición a la API de Treble para actualizar chat
     // axios.post(apiUrl, apiData)
