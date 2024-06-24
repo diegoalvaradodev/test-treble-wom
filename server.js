@@ -20,41 +20,43 @@ app.get('/test', (req, res) => {
 });
 
 // Definir la ruta raíz
-app.post('/treble-webhook-dos', (req, res) => {
+app.post('/send-nip', (req, res) => {
     const data = req.body;
-    console.log('Datos recibidos del webhook dos:', data); 
-    const apiUrl = `https://whatsappportabilidad.middlewom.co:443/requestnipcode/api/v1/requestnipcode/?user_key=588ff92551a096734491602cdda23a10`; // Construir la URL de la API
+    console.log('Datos recibidos del webhook nip:', data); 
+    
+    
+    //const apiUrl = `https://whatsappportabilidad.middlewom.co:443/requestnipcode/api/v1/requestnipcode/?user_key=588ff92551a096734491602cdda23a10`; // Construir la URL de la API
       // Preparar los datos de la petición
-      const apiData = {    
-        "init": {
-            "isRedirect": "JSON",
-            "query": "REQUEST_NIP_CODE"
-        },
-        "body":{
-            "origin": "what_port",
-            "serviceNumber": "573214452338",
-            "donorCode": "1",
-            "requestType": "1"
-        }
-      };
+    //  const apiData = {    
+    // "init": {
+    //     "isRedirect": "JSON",
+    //     "query": "REQUEST_NIP_CODE"
+    // },
+    // "body":{
+    //     "origin": "what_port",
+    //     "serviceNumber": "573214452338",
+    //     "donorCode": "1",
+    //     "requestType": "1"
+    // }
+    //;
     
-      console.log('Iniciando peticion NIP a Treble:', apiUrl);
-      console.log('Datos de la petición NIP:', apiData);
+    //onsole.log('Iniciando peticion NIP a Treble:', apiUrl);
+    //onsole.log('Datos de la petición NIP:', apiData);
     
-    // Realizar la petición a la API de Treble para actualizar chat
-        axios.post(apiUrl, apiData)
-          .then(response => {
-            console.log('Response NIP:', response);
-        })
-        .catch(error => {
-            console.error('Error making POST request:', error);
-            // Envía una respuesta a Treble con el error
-            res.status(500).json({
-                status: 'error',
-                message: 'Error processing webhook',
-                error: error.message
-            });
-        });
+    //Realizar la petición a la API de Treble para actualizar chat
+    // axios.post(apiUrl, apiData)
+    //   .then(response => {
+    //     console.log('Response NIP:', response);
+    // })
+    // .catch(error => {
+    //     console.error('Error making POST request:', error);
+    //     // Envía una respuesta a Treble con el error
+    //     res.status(500).json({
+    //         status: 'error',
+    //         message: 'Error processing webhook',
+    //         error: error.message
+    //     });
+    // });
     
         res.json({
             status: 'success',
